@@ -202,32 +202,32 @@
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 16px;
       max-width: 680px;
     }
     .form-grid .full { grid-column: 1 / -1; }
     .form-group { display: flex; flex-direction: column; }
     input[type="text"],
     input[type="email"] {
-      background: transparent;
+      background: var(--light);
       border: 1px solid var(--border);
       color: var(--black);
       font-family: 'Fira Sans', sans-serif;
       font-size: 15px;
       font-weight: 300;
-      padding: 16px 20px;
+      padding: 20px 20px;
       outline: none;
       transition: border-color .2s;
       width: 100%;
     }
     input[type="text"]:focus,
     input[type="email"]:focus { border-color: #999; }
-    .radio-group { display: flex; gap: 12px; }
+    .radio-group { display: flex; gap: 16px; }
     .radio-option {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 20px;
+      padding: 18px 20px;
       border: 1px solid var(--border);
       cursor: pointer;
       font-size: 14px;
@@ -237,7 +237,7 @@
     }
     .radio-option input[type="radio"] { accent-color: var(--red); }
     .radio-option:has(input:checked) {
-      background: var(--light);
+      background: #e8e8e8;
       border-color: #999;
     }
     .form-hint {
