@@ -188,7 +188,7 @@
     .preis-block {
       background: var(--black);
       padding: 28px 48px;
-      margin-top: 1px;
+      margin-top: 16px;
       color: var(--white);
       font-size: 20px;
       line-height: 1.4;
@@ -202,7 +202,7 @@
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
+      gap: 12px;
       max-width: 680px;
     }
     .form-grid .full { grid-column: 1 / -1; }
@@ -211,7 +211,6 @@
     input[type="email"] {
       background: transparent;
       border: 1px solid var(--border);
-      border-top: none;
       color: var(--black);
       font-family: 'Fira Sans', sans-serif;
       font-size: 15px;
@@ -221,26 +220,21 @@
       transition: border-color .2s;
       width: 100%;
     }
-    .form-grid .form-group:first-child input { border-top: 1px solid var(--border); }
-    .form-grid > .form-group:nth-child(3) input { border-right: none; }
     input[type="text"]:focus,
     input[type="email"]:focus { border-color: #999; }
-    .radio-group { display: flex; gap: 0; }
+    .radio-group { display: flex; gap: 12px; }
     .radio-option {
       display: flex;
       align-items: center;
       gap: 8px;
       padding: 14px 20px;
       border: 1px solid var(--border);
-      border-top: none;
       cursor: pointer;
       font-size: 14px;
       font-weight: 300;
       flex: 1;
       transition: background .15s;
-      margin-right: -1px;
     }
-    .radio-option:last-child { margin-right: 0; }
     .radio-option input[type="radio"] { accent-color: var(--red); }
     .radio-option:has(input:checked) {
       background: var(--light);
