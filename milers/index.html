@@ -18,7 +18,7 @@
       --gray:   #6b6b6b;
       --light:  #f4f4f4;
       --white:  #fff;
-      --border: #e0e0e0;
+      --border: #bbb;
     }
 
     html { scroll-behavior: smooth; }
@@ -394,7 +394,10 @@
       <form id="milers-form" novalidate>
         <div class="form-grid">
           <div class="form-group fade d3">
-            <input type="text" id="name" name="name" placeholder="Nachname, Vorname *" required>
+            <input type="text" id="vorname" name="vorname" placeholder="Vorname *" required>
+          </div>
+          <div class="form-group fade d3">
+            <input type="text" id="nachname" name="nachname" placeholder="Nachname *" required>
           </div>
           <div class="form-group fade d3">
             <input type="email" id="email" name="email" placeholder="E-Mail-Adresse *" required>
@@ -456,20 +459,17 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nameVal = document.getElementById('name').value.trim();
+      const vorname  = document.getElementById('vorname').value.trim();
+      const nachname = document.getElementById('nachname').value.trim();
       const emailVal = document.getElementById('email').value.trim();
 
-      if (!nameVal || !emailVal) {
+      if (!vorname || !nachname || !emailVal) {
         alert('Bitte Pflichtfelder ausfüllen.');
         return;
       }
 
       submitBtn.disabled = true;
       btnLabel.textContent = 'Wird gesendet...';
-
-      const nameParts = nameVal.split(',').map(s => s.trim());
-      const nachname = nameParts[0] || '';
-      const vorname  = nameParts[1] || '';
 
       const payload = {
         vorname,
