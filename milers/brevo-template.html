@@ -1,0 +1,62 @@
+<!--
+  Brevo Transactional Template – Milers Leistungstest
+  Betreff: Deine Anmeldung zum Milers Leistungstest am 18. Juli
+  Template-ID: 8 (BREVO_TEMPLATE_ID_MILERS)
+  Variablen: {{ params.VORNAME }}, {{ params.NACHNAME }}
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: 'Fira Sans', Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .wrap { max-width: 600px; margin: 40px auto; background: #fff; }
+    .header { background: #111; padding: 28px 40px; text-align: center; }
+    .header img { height: 40px; }
+    .body { padding: 40px; }
+    .body p { font-size: 15px; font-weight: 300; color: #111; line-height: 1.7; margin-bottom: 16px; }
+    .facts { border: 1px solid #e0e0e0; margin: 24px 0; }
+    .fact { display: flex; padding: 14px 20px; border-bottom: 1px solid #e0e0e0; }
+    .fact:last-child { border-bottom: none; }
+    .fact-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6b6b6b; width: 120px; flex-shrink: 0; padding-top: 2px; }
+    .fact-val { font-size: 15px; font-weight: 400; color: #111; }
+    .footer { background: #111; padding: 24px 40px; text-align: center; }
+    .footer p { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.4); margin: 0; }
+    .footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <img src="https://static.wixstatic.com/media/c5782e_d6e9ccc7f3fe4bbcb49dae3ec181c868~mv2.png" alt="ProAthletes">
+    </div>
+    <div class="body">
+      <p>{{ params.VORNAME }}, deine Anmeldung ist eingegangen.</p>
+      <div class="facts">
+        <div class="fact">
+          <span class="fact-label">Was</span>
+          <span class="fact-val">Leistungstest mit Laktatdiagnostik</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Wann</span>
+          <span class="fact-val">Samstag, 18. Juli 2026, 9:00–12:00 Uhr</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Wo</span>
+          <span class="fact-val">OKB Köln</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Preis</span>
+          <span class="fact-val">89 € (Milers-Vereinsmitglieder)</span>
+        </div>
+      </div>
+      <p>Du erhältst rechtzeitig vor dem Termin alle weiteren Informationen (Treffpunkt, Ablauf, was du mitbringen sollst) per Mail.</p>
+      <p>Bei Fragen melde dich unter: <a href="mailto:info@proathletes.de" style="color:#e30513;">info@proathletes.de</a></p>
+      <p style="margin-top:32px;">Dein ProAthletes-Team</p>
+    </div>
+    <div class="footer">
+      <p>ProAthletes GmbH &nbsp;·&nbsp; <a href="https://proathletes.de">proathletes.de</a></p>
+    </div>
+  </div>
+</body>
+</html>
