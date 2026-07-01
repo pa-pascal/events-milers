@@ -200,44 +200,48 @@
 
     #formular { background: var(--white); }
     .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       max-width: 680px;
     }
-    .form-grid .full { grid-column: 1 / -1; }
     .form-group { display: flex; flex-direction: column; }
     input[type="text"],
     input[type="email"] {
-      background: var(--light);
+      background: transparent;
       border: 1px solid var(--border);
+      border-top: none;
       color: var(--black);
       font-family: 'Fira Sans', sans-serif;
       font-size: 15px;
       font-weight: 300;
-      padding: 20px 20px;
+      padding: 14px 20px;
       outline: none;
       transition: border-color .2s;
       width: 100%;
     }
+    .form-group:first-child input { border-top: 1px solid var(--border); }
     input[type="text"]:focus,
     input[type="email"]:focus { border-color: #999; }
-    .radio-group { display: flex; gap: 16px; }
+    .radio-group { display: flex; gap: 0; }
     .radio-option {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 18px 20px;
+      padding: 12px 20px;
       border: 1px solid var(--border);
+      border-top: none;
       cursor: pointer;
       font-size: 14px;
       font-weight: 300;
       flex: 1;
       transition: background .15s;
+      margin-right: -1px;
     }
+    .radio-option:last-child { margin-right: 0; }
     .radio-option input[type="radio"] { accent-color: var(--red); }
     .radio-option:has(input:checked) {
-      background: #e8e8e8;
+      background: var(--light);
       border-color: #999;
     }
     .form-hint {
@@ -390,10 +394,10 @@
 
       <form id="milers-form" novalidate>
         <div class="form-grid">
-          <div class="form-group full fade d3">
+          <div class="form-group fade d3">
             <input type="text" id="name" name="name" placeholder="Nachname, Vorname *" required>
           </div>
-          <div class="form-group full fade d3">
+          <div class="form-group fade d3">
             <input type="email" id="email" name="email" placeholder="E-Mail-Adresse *" required>
           </div>
           <div class="form-group fade d3">
@@ -402,7 +406,7 @@
           <div class="form-group fade d3">
             <input type="text" id="zielzeit" name="zielzeit" placeholder="Zielzeit 10 km (z.B. 42:30)">
           </div>
-          <div class="form-group full fade d3">
+          <div class="form-group fade d3">
             <div class="radio-group">
               <label class="radio-option">
                 <input type="radio" name="trainingsplan" value="ja" checked> Trainingsplan gewünscht (inklusive)
