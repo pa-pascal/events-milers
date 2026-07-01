@@ -202,7 +202,7 @@
     .form-grid {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 12px;
       max-width: 680px;
     }
     .form-group { display: flex; flex-direction: column; }
@@ -210,17 +210,15 @@
     input[type="email"] {
       background: transparent;
       border: 1px solid var(--border);
-      border-top: none;
       color: var(--black);
       font-family: 'Fira Sans', sans-serif;
       font-size: 15px;
       font-weight: 300;
-      padding: 14px 20px;
+      padding: 16px 20px;
       outline: none;
       transition: border-color .2s;
       width: 100%;
     }
-    .form-group:first-child input { border-top: 1px solid var(--border); }
     input[type="text"]:focus,
     input[type="email"]:focus { border-color: #999; }
     .radio-group { display: flex; gap: 0; }
@@ -228,9 +226,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 12px 20px;
+      padding: 14px 20px;
       border: 1px solid var(--border);
-      border-top: none;
       cursor: pointer;
       font-size: 14px;
       font-weight: 300;
