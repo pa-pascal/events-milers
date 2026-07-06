@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProAthletes x Milers Colonia | Leistungsdiagnostik im Feld</title>
+  <meta name="description" content="Leistungstest mit Laktatdiagnostik auf der OKB Köln. ProAthletes in Kooperation mit Milers Colonia e.V. – 18. Juli 2026.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #e30513;
+      --black:  #111;
+      --gray:   #6b6b6b;
+      --light:  #f4f4f4;
+      --white:  #fff;
+      --border: #e0e0e0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 12px 48px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header img { height: 56px; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; }
+
+    .stage {
+      background: var(--black);
+      min-height: 96vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .stage video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .stage-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.52);
+      z-index: 1;
+    }
+    .stage-content {
+      position: relative;
+      padding: 0 48px 72px;
+      z-index: 2;
+    }
+    .stage-preline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 16px;
+    }
+    .stage-headline {
+      font-size: clamp(48px, 9vw, 120px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: .9;
+      letter-spacing: -.035em;
+      margin-bottom: 32px;
+    }
+    .stage-meta {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 40px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stage-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: .85; }
+
+    section { padding: 80px 48px; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.8vw, 48px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -.025em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    #leistungen { background: var(--white); border-bottom: 1px solid var(--border); }
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .leistung-box {
+      background: var(--white);
+      padding: 36px 32px;
+      transition: background .2s;
+    }
+    .leistung-box:hover { background: var(--light); }
+    .leistung-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+    .leistung-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .leistung-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .preis-block {
+      background: var(--black);
+      padding: 28px 48px;
+      margin-top: 16px;
+      color: var(--white);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+    .preis-block span + span {
+      margin-left: 8px;
+      opacity: .85;
+    }
+
+    #formular { background: var(--white); }
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 668px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group.narrow input { max-width: 200px; }
+    input[type="text"],
+    input[type="email"] {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--black);
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      padding: 16px 20px;
+      width: 100%;
+      outline: none;
+      transition: border-color .2s;
+    }
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder { color: #888; }
+    input[type="text"]:focus,
+    input[type="email"]:focus { border-color: #999; }
+    .radio-group { display: flex; gap: 0; }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 300;
+      flex: 1;
+      transition: background .15s;
+      margin-right: -1px;
+    }
+    .radio-option:last-child { margin-right: 0; }
+    .radio-option input[type="radio"] { accent-color: var(--red); }
+    .radio-option:has(input:checked) {
+      background: var(--light);
+      border-color: #999;
+    }
+    .form-hint {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray);
+      margin-top: 24px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+    .form-actions { margin-top: 32px; }
+
+    .success-msg {
+      display: none;
+      background: var(--light);
+      border-left: 3px solid var(--red);
+      padding: 24px 28px;
+      max-width: 680px;
+      margin-top: 32px;
+    }
+    .success-msg.visible { display: block; }
+    .success-msg strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .success-msg p {
+      font-size: 14px;
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    footer {
+      background: var(--black);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #1e1e1e;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer img { height: 17px; }
+    .footer-center {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.35);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    @media (max-width: 768px) {
+      header { padding: 12px 24px; }
+      section { padding: 60px 24px; }
+      .stage-content { padding: 0 24px 56px; }
+      .stage-meta { gap: 16px; flex-direction: column; }
+      .leistungen-grid { grid-template-columns: 1fr; }
+      .preis-block { padding: 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .full { grid-column: 1; }
+      .form-grid > .form-group:nth-child(3) input { border-right: 1px solid var(--border); }
+      footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://static.wixstatic.com/media/c5782e_d6e9ccc7f3fe4bbcb49dae3ec181c868~mv2.png" alt="ProAthletes">
+  </header>
+
+  <section class="stage" id="top">
+    <video autoplay muted loop playsinline>
+      <source src="https://video.wixstatic.com/video/c5782e_b89a8a83fd9743bc959678ab3dfc674f/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <div class="stage-overlay"></div>
+    <div class="stage-content">
+        <p class="stage-preline">ProAthletes × Milers Colonia</p>
+        <h1 class="stage-headline">Know your limits.</h1>
+        <div class="stage-meta">
+          <span>Samstag, 18. Juli 2026</span>
+          <span>9:00 – 12:00 Uhr</span>
+          <span>OKB Köln</span>
+        </div>
+        <a href="#formular" class="btn">Jetzt anmelden</a>
+    </div>
+  </section>
+
+  <section id="leistungen">
+    <div class="wrap">
+      <p class="section-label fade">Was du bekommst</p>
+      <h2 class="section-title fade d1">Leistungsdiagnostik. Into the field.</h2>
+      <p class="section-sub fade d2">Vier Bausteine, die dir ein klares Bild deiner aktuellen Leistungsfähigkeit geben und dein Training auf ein neues Level heben.</p>
+      <div class="leistungen-grid">
+        <div class="leistung-box fade">
+          <p class="leistung-num">01</p>
+          <h3 class="leistung-title">Lauf-Feldtest mit Laktatdiagnostik</h3>
+          <p class="leistung-text">Standardisierter Test auf der Laufbahn mit Laktatmessung, Herzfrequenz und Pace-Protokoll. Wissenschaftlich fundiert, praxisnah umgesetzt.</p>
+        </div>
+        <div class="leistung-box fade d1">
+          <p class="leistung-num">02</p>
+          <h3 class="leistung-title">Individuelle schriftliche Auswertung</h3>
+          <p class="leistung-text">Du erhältst deine persönliche Auswertung per Mail: Schwellenbestimmung und klar definierte Trainingsbereiche, direkt einsetzbar.</p>
+        </div>
+        <div class="leistung-box fade d2">
+          <p class="leistung-num">03</p>
+          <h3 class="leistung-title">Gemeinsame Nachbesprechung</h3>
+          <p class="leistung-text">Ca. 1 Woche nach dem Test: Gruppensession (optional online) zur Besprechung deiner Ergebnisse, Trainingssteuerung und Fragerunde.</p>
+        </div>
+        <div class="leistung-box fade d3">
+          <p class="leistung-num">04</p>
+          <h3 class="leistung-title">Online-Trainingsplan (optional)</h3>
+          <p class="leistung-text">Auf Wunsch erhältst du einen standardisierten Online-Trainingsplan, der auf deinen Testergebnissen basiert. Inklusive, kein Aufpreis.</p>
+        </div>
+      </div>
+      <div class="preis-block fade">
+        <span style="font-weight:700;">139 €</span><span style="font-weight:400;font-size:13px;"> Plätze sind begrenzt.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="formular">
+    <div class="wrap">
+      <p class="section-label fade">Anmeldung</p>
+      <h2 class="section-title fade d1">Jetzt anmelden.</h2>
+      <p class="section-sub fade d2">Füll das Formular aus und sichere dir deinen Platz. Anmeldeschluss ist der <strong>8. Juli 2026</strong>.</p>
+
+      <form id="milers-form" novalidate>
+        <div class="form-grid">
+          <div class="form-row fade d3">
+            <div class="form-group">
+              <input type="text" id="vorname" name="vorname" placeholder="Vorname *" required>
+            </div>
+            <div class="form-group">
+              <input type="text" id="nachname" name="nachname" placeholder="Nachname *" required>
+            </div>
+          </div>
+          <div class="form-group fade d3">
+            <input type="email" id="email" name="email" placeholder="E-Mail-Adresse *" required>
+          </div>
+          <div class="form-group narrow fade d3">
+            <input type="text" id="geburtsjahr" name="geburtsjahr" placeholder="Geburtsjahr" maxlength="4">
+          </div>
+          <div class="form-group fade d3">
+            <input type="text" id="zielzeit" name="zielzeit" placeholder="Aktuelle 10-km-Zeit (letzte 6 Monate, z. B. 42:30)">
+          </div>
+          <div class="form-group fade d3">
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="trainingsplan" value="ja" checked> Online-Trainingsplan gewünscht (inklusive)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="trainingsplan" value="nein"> Ich habe bereits einen Trainingsplan
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <p class="form-hint fade">Mit der Anmeldung stimmst du der Verarbeitung deiner Daten zum Zweck der Eventdurchführung zu. Weitere Infos in der <a href="#" style="color:var(--black);">Datenschutzerklärung</a>.</p>
+
+        <div class="form-actions fade">
+          <button type="submit" class="btn" id="submit-btn">
+            <span id="btn-label">Anmeldung absenden</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        <strong>Anmeldung eingegangen.</strong>
+        <p>Du erhältst in Kürze eine Bestätigungsmail. Bei Fragen melde dich unter <a href="mailto:info@proathletes.de" style="color:var(--black);">info@proathletes.de</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="https://static.wixstatic.com/media/c5782e_d6e9ccc7f3fe4bbcb49dae3ec181c868~mv2.png" alt="ProAthletes">
+    <span class="footer-center">#wearepa</span>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(e => e.forEach(x => {
+      if (x.isIntersecting) x.target.classList.add('in');
+    }), { threshold: .08 });
+    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+    const form = document.getElementById('milers-form');
+    const successMsg = document.getElementById('success-msg');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnLabel = document.getElementById('btn-label');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const vorname  = document.getElementById('vorname').value.trim();
+      const nachname = document.getElementById('nachname').value.trim();
+      const emailVal = document.getElementById('email').value.trim();
+
+      if (!vorname || !nachname || !emailVal) {
+        alert('Bitte Pflichtfelder ausfüllen.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      btnLabel.textContent = 'Wird gesendet...';
+
+      const payload = {
+        vorname,
+        nachname,
+        email:         emailVal,
+        geburtsjahr:   document.getElementById('geburtsjahr').value.trim(),
+        zielzeit_10k:  document.getElementById('zielzeit').value.trim(),
+        trainingsplan: document.querySelector('input[name="trainingsplan"]:checked')?.value === 'ja',
+        teilnehmer_typ: 'community',
+      };
+
+      try {
+        const res = await fetch('https://qyenoadmtlyyxclirgvl.supabase.co/rest/v1/milers_registrations', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5ZW5vYWRtdGx5eXhjbGlyZ3ZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3ODAxMTEsImV4cCI6MjA5NzM1NjExMX0.G6ysGDkZEsV7IqY7Hg488TdFsLOWhJi2ojp5wKDb4ZM',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5ZW5vYWRtdGx5eXhjbGlyZ3ZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3ODAxMTEsImV4cCI6MjA5NzM1NjExMX0.G6ysGDkZEsV7IqY7Hg488TdFsLOWhJi2ojp5wKDb4ZM',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || 'Fehler beim Senden.');
+        }
+
+        const BREVO_KEY = '';
+
+        await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
+          body: JSON.stringify({
+            email: emailVal,
+            attributes: { VORNAME: vorname, NACHNAME: nachname },
+            listIds: [9],
+            updateEnabled: true
+          })
+        }).catch(() => {});
+
+        await fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'api-key': BREVO_KEY },
+          body: JSON.stringify({
+            to: [{ email: emailVal, name: vorname + ' ' + nachname }],
+            templateId: 8,
+            params: { VORNAME: vorname, NACHNAME: nachname }
+          })
+        }).catch(() => {});
+
+        form.style.display = 'none';
+        successMsg.classList.add('visible');
+      } catch (err) {
+        alert('Fehler: ' + err.message + '\nBitte versuche es erneut oder schreib uns direkt.');
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Anmeldung absenden';
+      }
+    });
+  </script>
+</body>
+</html>
