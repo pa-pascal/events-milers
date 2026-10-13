@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProAthletes | Trainingslager Mallorca 2027</title>
+  <meta name="description" content="Save the Date: ProAthletes Trainingslager auf Mallorca vom 07. bis 21. März 2027 im VIVA Blue in Playa de Muro / Alcúdia. Jetzt vormerken.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #e30513;
+      --black:  #111;
+      --gray:   #6b6b6b;
+      --light:  #f4f4f4;
+      --white:  #fff;
+      --border: #e0e0e0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 12px 48px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header img { height: 56px; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; }
+
+    .stage {
+      background: var(--black);
+      min-height: 96vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .stage video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .stage-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.52);
+      z-index: 1;
+    }
+    .stage-content {
+      position: relative;
+      padding: 0 48px 72px;
+      z-index: 2;
+    }
+    .stage-preline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 16px;
+    }
+    .stage-headline {
+      font-size: clamp(48px, 9vw, 120px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: .9;
+      letter-spacing: -.035em;
+      margin-bottom: 32px;
+    }
+    .stage-meta {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 40px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stage-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn:disabled { opacity: .6; cursor: default; }
+
+    section { padding: 80px 48px; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.8vw, 48px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -.025em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    #camp { background: var(--white); border-bottom: 1px solid var(--border); }
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .leistung-box {
+      background: var(--white);
+      padding: 36px 32px;
+      transition: background .2s;
+    }
+    .leistung-box:hover { background: var(--light); }
+    .leistung-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+    .leistung-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .leistung-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    #formular { background: var(--white); }
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 600px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group { display: flex; flex-direction: column; }
+    input[type="text"],
+    input[type="email"] {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--black);
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      padding: 16px 20px;
+      width: 100%;
+      outline: none;
+      border-radius: 0;
+      transition: border-color .2s;
+    }
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder { color: #888; }
+    input[type="text"]:focus,
+    input[type="email"]:focus { border-color: #999; }
+    .form-hint {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray);
+      margin-top: 24px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+    .form-actions { margin-top: 32px; }
+
+    .success-msg {
+      display: none;
+      background: var(--light);
+      border-left: 3px solid var(--red);
+      padding: 24px 28px;
+      max-width: 680px;
+      margin-top: 32px;
+    }
+    .success-msg.visible { display: block; }
+    .success-msg strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .success-msg p {
+      font-size: 14px;
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    footer {
+      background: var(--black);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #1e1e1e;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer img { height: 17px; }
+    .footer-center {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.35);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+
+    @media (max-width: 768px) {
+      header { padding: 12px 24px; }
+      section { padding: 60px 24px; }
+      .stage-content { padding: 0 24px 56px; }
+      .stage-meta { gap: 16px; flex-direction: column; }
+      .leistungen-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://static.wixstatic.com/media/c5782e_d6e9ccc7f3fe4bbcb49dae3ec181c868~mv2.png" alt="ProAthletes">
+  </header>
+
+  <section class="stage" id="top">
+    <video autoplay muted loop playsinline>
+      <source src="https://video.wixstatic.com/video/c5782e_b89a8a83fd9743bc959678ab3dfc674f/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <div class="stage-overlay"></div>
+    <div class="stage-content">
+      <div class="wrap">
+        <p class="stage-preline">ProAthletes Trainingslager 2027</p>
+        <h1 class="stage-headline">Mallorca 2027.</h1>
+        <div class="stage-meta">
+          <span>07. bis 21. März 2027</span>
+          <span>VIVA Blue, Playa de Muro / Alcúdia</span>
+          <span>14 Tage, individuell planbar</span>
+        </div>
+        <a href="#formular" class="btn">Termin vormerken</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="camp">
+    <div class="wrap">
+      <p class="section-label fade">Save the Date</p>
+      <h2 class="section-title fade d1">Auch 2027 geht es mit uns wieder ins Trainingslager nach Mallorca.</h2>
+      <p class="section-sub fade d2">Perfekte Bedingungen, um vor den Osterferien und noch abseits der ganz großen Saison auf Mallorca viele Trainingskilometer zu sammeln.</p>
+      <div class="leistungen-grid">
+        <div class="leistung-box fade">
+          <p class="leistung-num">01</p>
+          <h3 class="leistung-title">07. bis 21. März 2027</h3>
+          <p class="leistung-text">Für 14 Tage sind wir wieder auf Mallorca, vor den Osterferien und noch abseits der ganz großen Saison.</p>
+        </div>
+        <div class="leistung-box fade d1">
+          <p class="leistung-num">02</p>
+          <h3 class="leistung-title">VIVA Blue, Playa de Muro / Alcúdia</h3>
+          <p class="leistung-text">Wir sind wieder im VIVA Blue in Playa de Muro / Alcúdia.</p>
+        </div>
+        <div class="leistung-box fade d2">
+          <p class="leistung-num">03</p>
+          <h3 class="leistung-title">Starker Grundlagenblock</h3>
+          <p class="leistung-text">Der Fokus liegt wie gewohnt auf einem starken Grundlagenblock mit viel Umfang und zusätzlichen Schwerpunkten auf Technik und Qualität in den einzelnen Disziplinen.</p>
+        </div>
+        <div class="leistung-box fade d3">
+          <p class="leistung-num">04</p>
+          <h3 class="leistung-title">Aufenthalt individuell planen</h3>
+          <p class="leistung-text">Das Camp geht wie immer über 14 Tage, du hast aber auch die Möglichkeit, eine Woche, zehn Tage oder länger dabei zu sein.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formular">
+    <div class="wrap">
+      <p class="section-label fade">Vormerken</p>
+      <h2 class="section-title fade d1">Termin vormerken.</h2>
+      <p class="section-sub fade d2">Trag dich ein und du bekommst alle Details zum Camp und den Link zur Buchung per Mail, sobald es losgeht.</p>
+
+      <form id="camp-form" novalidate>
+        <div class="form-grid">
+          <div class="form-row fade d3">
+            <div class="form-group">
+              <input type="text" id="vorname" name="vorname" placeholder="Vorname *" autocomplete="given-name" required>
+            </div>
+            <div class="form-group">
+              <input type="text" id="nachname" name="nachname" placeholder="Nachname *" autocomplete="family-name" required>
+            </div>
+          </div>
+          <div class="form-group fade d3">
+            <input type="email" id="email" name="email" placeholder="E-Mail-Adresse *" autocomplete="email" required>
+          </div>
+        </div>
+
+        <p class="form-hint fade">Mit dem Eintrag stimmst du zu, dass wir dir Infos zum Trainingslager per Mail schicken. Du kannst dich jederzeit abmelden. Weitere Infos in der <a href="https://www.proathletes.de/datenschutz" style="color:var(--black);">Datenschutzerklärung</a>.</p>
+
+        <div class="form-actions fade">
+          <button type="submit" class="btn" id="submit-btn">
+            <span id="btn-label">Vormerken</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        <strong>Du bist vorgemerkt.</strong>
+        <p>Sobald alle Details stehen, bekommst du sie per Mail. Bei Fragen melde dich unter <a href="mailto:info@proathletes.de" style="color:var(--black);">info@proathletes.de</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="https://static.wixstatic.com/media/c5782e_d6e9ccc7f3fe4bbcb49dae3ec181c868~mv2.png" alt="ProAthletes">
+    <span class="footer-center">#wearepa</span>
+    <div class="footer-links">
+      <a href="https://www.proathletes.de/impressum">Impressum</a>
+      <a href="https://www.proathletes.de/datenschutz">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(e => e.forEach(x => {
+      if (x.isIntersecting) x.target.classList.add('in');
+    }), { threshold: .08 });
+    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+    const form       = document.getElementById('camp-form');
+    const successMsg = document.getElementById('success-msg');
+    const submitBtn  = document.getElementById('submit-btn');
+    const btnLabel   = document.getElementById('btn-label');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const vorname  = document.getElementById('vorname').value.trim();
+      const nachname = document.getElementById('nachname').value.trim();
+      const email    = document.getElementById('email').value.trim();
+
+      if (!vorname || !nachname || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Bitte Vorname, Nachname und eine gültige E-Mail-Adresse eintragen.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      btnLabel.textContent = 'Wird gesendet...';
+
+      try {
+        const res = await fetch('/.netlify/functions/camp-register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ vorname, nachname, email }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || 'Fehler beim Senden.');
+        }
+
+        form.style.display = 'none';
+        successMsg.classList.add('visible');
+      } catch (err) {
+        alert('Fehler: ' + err.message + '\nBitte versuche es erneut oder schreib uns an info@proathletes.de.');
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Vormerken';
+      }
+    });
+  </script>
+</body>
+</html>
